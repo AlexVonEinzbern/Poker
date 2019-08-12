@@ -28,6 +28,14 @@ public class Poker extends JFrame {
 	}
 	
 	private void initGUI() {
-		
+		crearMesa();
+		this.getContentPane().add(panel);
+		panel.setLayout(null);
+	}
+	
+	private void crearMesa() {
+		panel = new JPanel();
+		imagenDeFondo.setBounds(0, 0, 1280, 720);
+		panel.add(imagenDeFondo);
 	}
 }
