@@ -6,11 +6,31 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * Contiene toda la lógica del juego.
+ * @author 
+ *
+ */
 public class Poker extends JFrame {
+	/**
+	 * Contiene la imágen de la mesa de juego.
+	 */
 	JLabel imagenDeFondo = new JLabel(new ImageIcon("src/images/mesa.jpg"));
+	/**
+	 * Es el panel sobre el que se coloca la imágen de fondo y las cartas.
+	 */
 	JPanel panel = new JPanel();
+	/**
+	 * Contiene las cartas del juego.
+	 */
 	Baraja mazo = new Baraja();
+	/**
+	 * 
+	 */
 	public static final int ANCHO=128;
+	/**
+	 * 
+	 */
 	public static final int ALTO=196;
 	
 	public Poker() {
@@ -30,24 +50,29 @@ public class Poker extends JFrame {
 		}
 	}
 	
+	/**
+	 * Se ejecuta la interfaz gráfica del juego, se agrega el panel al frame.
+	 */
 	private void initGUI() {
 		crearMesa();
 		this.getContentPane().add(panel);
 		panel.setLayout(null);
 	}
 	
-	
+	/**
+	 * Agrega la imágen de fondo al panel, agrega las cartas a la mesa y las posiciona.
+	 */
 	private void crearMesa() {
-		
 		panel = new JPanel();
 		imagenDeFondo.setBounds(0, 0, 1280, 720);
 		panel.add(imagenDeFondo);
 		agregarLasCartasALaMesa();
 		posicionarMasoEnlaMesa();
-		JOptionPane.showMessageDialog(null, mazo.getBarajaFrancesa().size());
-		
 	}
 	
+	/**
+	 * Posiciona la baraja en la mesa.
+	 */
 	private void posicionarMasoEnlaMesa() {
 
 		int x=0;
@@ -58,6 +83,9 @@ public class Poker extends JFrame {
 		}
 	}
 	 
+	/**
+	 * Agrega la baraja a la mesa.
+	 */
 	private void agregarLasCartasALaMesa() {
 		for (int i=0;i<52;i++) {
 		imagenDeFondo.add(mazo.getBarajaFrancesa().get(i));
