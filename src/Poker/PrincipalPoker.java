@@ -15,7 +15,7 @@ public class PrincipalPoker {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				Poker myWindow = new Poker();
+				Poker Window = new Poker();
 			}
 		});
 	}
