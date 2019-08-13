@@ -82,7 +82,6 @@ public class Poker extends JFrame {
 			mazo.getBarajaFrancesa().get(i).setBounds(x,y,ANCHO,ALTO);
 			x--;
 			y--;
-			
 		}
 	}
 	 

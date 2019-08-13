@@ -32,6 +32,9 @@ public class Carta extends JButton {
 	 */
 	private String color;
 	
+	/**
+	 * Parte de atrás de las cartas, rojo y azul.
+	 */
 	private ImageIcon[] imagenesDecartasAlrevez= {
 			new ImageIcon("src/cards/rojo.png"),
 			new ImageIcon("src/cards/azul.png")};
@@ -52,30 +55,18 @@ public class Carta extends JButton {
 	
 	}
 	
+	/**
+	 * 
+	 */
 	public void colocarColorAleatorio() {
 		Random aleatorio =new Random();
 		setIcon(imagenesDecartasAlrevez[aleatorio.nextInt(2)]);
 	}
 	
+	/**
+	 * 
+	 */
 	public void voltear() {
 		setIcon(new ImageIcon("src/cards/"+valorNumerico+simbolo+palo+color+".png"));
 	}
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
