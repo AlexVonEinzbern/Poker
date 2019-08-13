@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class Poker extends JFrame {
 	JLabel imagenDeFondo = new JLabel(new ImageIcon("src/images/mesa.jpg"));
 	JPanel panel = new JPanel();
-	Baraja mazo=new Baraja();
+	Baraja mazo = new Baraja();
 	public static final int ANCHO=128;
 	public static final int ALTO=196;
 	
@@ -55,7 +55,6 @@ public class Poker extends JFrame {
 		for (int i=0;i<52;i++) {
 			mazo.getBarajaFrancesa().get(i).setBounds(x,y,ANCHO,ALTO);
 			x+=5;
-			
 		}
 	}
 	 

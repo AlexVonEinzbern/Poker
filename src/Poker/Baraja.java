@@ -30,7 +30,6 @@ public class Baraja {
 				barajaFrancesa.add(new Carta(valor, simbolos[letra], palos[palo], colores[palo]));
 			}
 			valor++;
-			
 		}
 
 		// agregar cartas A a la baraja francesa
@@ -38,9 +37,6 @@ public class Baraja {
 			for (int palo = 0; palo < 4; palo++) {
 				barajaFrancesa.add(new Carta(1, simbolos[3], palos[palo], colores[palo]));
 			}
-			
-
-
 	} 
 
 	public Baraja() {
