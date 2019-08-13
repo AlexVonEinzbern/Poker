@@ -7,13 +7,14 @@ public class Baraja {
 	private ArrayList<Carta> barajaFrancesa = new ArrayList<Carta>();
 
 	public void crearUnaBaraja() {
+		int valor=11;
 
-		char[] palos = { 'p', 'd', 't', 'c' };
-		char[] colores = { 'n', 'r', 'n', 'r' };
-		String[] simbolos = { "J", "Q", "k", "A" };
+		String[] palos = { "p", "d", "t", "c" };
+		String[] colores = { "n", "r", "n", "r" };
+		String[] simbolos = { "J", "Q", "K", "A" };
 
 		// agregar cartas nuericas a la baraja francesa
-		for (int palo = 0; palo < 5; palo++) {
+		for (int palo = 0; palo < 4; palo++) {
 
 			for (int desde = 2; desde < 11; desde++) {
 				barajaFrancesa.add(new Carta(desde, Integer.toString(desde), palos[palo], colores[palo]));
@@ -22,20 +23,25 @@ public class Baraja {
 
 		// agregar cartas J,Q,K a la baraja francesa
 
-		for (int palo = 0; palo < 5; palo++) {
+		for (int letra = 0; letra < 3; letra++) {
+			
 
-			for (int desde = 0; desde < 4; desde++) {
-				barajaFrancesa.add(new Carta(10, simbolos[desde], palos[palo], colores[palo]));
+			for (int palo = 0; palo < 4; palo++) {
+				barajaFrancesa.add(new Carta(valor, simbolos[letra], palos[palo], colores[palo]));
 			}
+			valor++;
+			
 		}
 
 		// agregar cartas A a la baraja francesa
 
-		for (int desde = 0; desde < 5; desde++) {
-			barajaFrancesa.add(new Carta(1, simbolos[3], palos[desde], colores[desde]));
-		}
+			for (int palo = 0; palo < 4; palo++) {
+				barajaFrancesa.add(new Carta(1, simbolos[3], palos[palo], colores[palo]));
+			}
+			
 
-	}
+
+	} 
 
 	public Baraja() {
 		crearUnaBaraja();
