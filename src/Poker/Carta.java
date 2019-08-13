@@ -1,5 +1,7 @@
 package Poker;
 
+import java.util.Random;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -30,7 +32,10 @@ public class Carta extends JButton {
 	 */
 	private String color;
 	
-	
+	private ImageIcon[] imagenesDecartasAlrevez= {
+			new ImageIcon("src/cards/rojo.png"),
+			new ImageIcon("src/cards/azul.png")};
+ 
 	/**
 	 * Constructor de la clase Carta.
 	 * @param valorNumerico
@@ -43,6 +48,34 @@ public class Carta extends JButton {
 		this.simbolo=simbolo;
 		this.palo=palo;
 		this.color=color;
-		this.setIcon(new ImageIcon("src/cards/"+valorNumerico+simbolo+palo+color+".png"));
+		this.colocarColorAleatorio();
+	
 	}
+	
+	public void colocarColorAleatorio() {
+		Random aleatorio =new Random();
+		setIcon(imagenesDecartasAlrevez[aleatorio.nextInt(2)]);
+	}
+	
+	public void voltear() {
+		setIcon(new ImageIcon("src/cards/"+valorNumerico+simbolo+palo+color+".png"));
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
