@@ -77,7 +77,7 @@ public class Poker extends JFrame {
 
 		int x=900;
 		int y=80;
-		//vamos a graficar el mazo usaremos 20 cartas ara ello (ara que no quede muy grueso)
+		//vamos a graficar el mazo usaremos 20 cartas para ello.
 		for (int i=0;i<20;i++) {
 			mazo.getBarajaFrancesa().get(i).setBounds(x,y,ANCHO,ALTO);
 			x--;
