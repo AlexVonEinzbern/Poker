@@ -4,13 +4,14 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  * Hace referencia a una carta del juego Poker.
  * @author
  *
  */
-public class Carta extends JButton {
+public class Carta extends JLabel {
 
 	/**
 	 * Valor numérico de la carta.
@@ -60,6 +61,48 @@ public class Carta extends JButton {
 	public void voltear() {
 		setIcon(new ImageIcon("src/cards/"+valorNumerico+simbolo+palo+color+".png"));
 	}
+
+	public int getValorNumerico() {
+		return valorNumerico;
+	}
+
+	public void setValorNumerico(int valorNumerico) {
+		this.valorNumerico = valorNumerico;
+	}
+
+	public String getSimbolo() {
+		return simbolo;
+	}
+
+	public void setSimbolo(String simbolo) {
+		this.simbolo = simbolo;
+	}
+
+	public String getPalo() {
+		return palo;
+	}
+
+	public void setPalo(String palo) {
+		this.palo = palo;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public ImageIcon[] getImagenesDecartasAlrevez() {
+		return imagenesDecartasAlrevez;
+	}
+
+	public void setImagenesDecartasAlrevez(ImageIcon[] imagenesDecartasAlrevez) {
+		this.imagenesDecartasAlrevez = imagenesDecartasAlrevez;
+	}
+	
+	
 	
 }
 

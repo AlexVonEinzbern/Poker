@@ -24,14 +24,16 @@ public class Poker extends JFrame {
 	 * Contiene las cartas del juego.
 	 */
 	Baraja mazo = new Baraja();
-	/**
-	 * 
-	 */
+
 	public static final int ANCHO=128;
-	/**
-	 * 
-	 */
+	
 	public static final int ALTO=196;
+	
+	private Jugador judador=new Jugador();
+	private Jugador pc=new Jugador();
+	
+	
+	
 	
 	public Poker() {
 		try {

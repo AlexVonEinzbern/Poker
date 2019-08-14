@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class Baraja {
 
-	private ArrayList<Carta> barajaFrancesa = new ArrayList<Carta>();
+	private ArrayList<Carta> barajaFrancesa = new ArrayList<Carta>(); 
 
 	public void crearUnaBaraja() {
+		
 		int valor=11;
 
 		String[] palos = { "p", "d", "t", "c" };
