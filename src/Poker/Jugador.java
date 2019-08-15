@@ -95,9 +95,10 @@ public class Jugador {
 	}
 
 
+	
 	public boolean tengoUnaEscaleraReal() {
 		boolean laTengo = false;
-		if ((misCartas.contains(new Carta(valorDeMiJugada, nombre, nombre, nombre).getSimbolo()=="10")||
+		if ((misCartas.contains(Carta carta.getSimbolo()=="10")||
 			misCartas.contains(new Carta(10,"10","p","n"))||
 			misCartas.contains(new Carta(10,"10","d","r"))||
 			misCartas.contains(new Carta(10,"10","p","n")))&&
