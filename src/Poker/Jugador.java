@@ -96,18 +96,5 @@ public class Jugador {
 
 
 	
-	public boolean tengoUnaEscaleraReal() {
-		boolean laTengo = false;
-		if ((misCartas.contains(Carta carta.getSimbolo()=="10")||
-			misCartas.contains(new Carta(10,"10","p","n"))||
-			misCartas.contains(new Carta(10,"10","d","r"))||
-			misCartas.contains(new Carta(10,"10","p","n")))&&
-				(misCartas.contains(new Carta(11,"J","c","r"))||
-				 misCartas.contains(new Carta(11,"J","p","n"))||
-				 misCartas.contains(new Carta(11,"J","p","n"))||
-				 misCartas.contains(new Carta(11,"J","p","n")))){
-			
-		}
-	return laTengo;
-	}
+
 }
