@@ -44,15 +44,27 @@ public class Carta extends JLabel {
 	 * @param palo
 	 * @param color
 	 */
-	public Carta(int valorNumerico,String simbolo,String palo,String color) {
-		this.valorNumerico=valorNumerico;
-		this.simbolo=simbolo;
-		this.palo=palo;
-		this.color=color;
+	public Carta(int valorNumerico, String simbolo, String palo, String color) {
+		this.valorNumerico = valorNumerico;
+		this.simbolo = simbolo;
+		this.palo = palo;
+		this.color = color;
 		this.colocarColorAleatorio();
-	
+
 	}
-	
+
+	Carta() {
+
+	};
+
+	Carta(Carta cual) {
+		valorNumerico = cual.getValorNumerico();
+		palo = cual.getPalo();
+
+	};
+
+	    
+	    
 	public void colocarColorAleatorio() {
 		Random aleatorio =new Random();
 		setIcon(imagenesDecartasAlrevez[aleatorio.nextInt(2)]);

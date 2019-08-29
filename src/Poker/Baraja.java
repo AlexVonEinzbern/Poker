@@ -47,4 +47,6 @@ public class Baraja {
 	public ArrayList<Carta> getBarajaFrancesa() {
 		return barajaFrancesa;
 	}
+	
+
 }
