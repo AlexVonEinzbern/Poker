@@ -7,8 +7,8 @@ public class Jugador {
 	private String nombre;
 	private int dinero;
 	private ArrayList<Carta> misCartas = new ArrayList<Carta>();
-	//private ArrayList<Carta> miJugada = new ArrayList<Carta>();
-	private int valorDeMiJugada;
+	private ArrayList<Carta> miJugada = new ArrayList<Carta>();
+
 
 	/**
 	 * determina la mejor jugada de un jugador empezando por la mejor jugada y
@@ -19,7 +19,13 @@ public class Jugador {
 	
 	
 	public Jugador(){
+
 	}
+	
+
+	
+
+
 	public boolean tengoUnaEscaleraRealDeColor() {
 
 		boolean laTengo = false;
@@ -109,6 +115,22 @@ public class Jugador {
 	public String getNombre() {
 		return nombre;
 	}
+
+	
+	public int getDinero() {
+		return dinero;
+	}
+
+
+	public void setDinero(int dinero) {
+		this.dinero = dinero;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 
 	public ArrayList<Carta> getMisCartas() {
 		return misCartas;
@@ -202,6 +224,10 @@ public class Jugador {
 	protected boolean pareja(int r) {
 		return (r == 1);
 	};
+	
+
+	public ArrayList<Carta> getMiJugada() {
+		return miJugada;}
 
 	protected String mano() {
 		String salida = "";
@@ -240,4 +266,5 @@ public class Jugador {
 		return salida;
 	};
 
+	
 }

@@ -1,5 +1,7 @@
 package Poker;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +13,8 @@ import javax.swing.JPanel;
 
 /**
  * Contiene toda la lógica del juego.
- * @author 
+ * 
+ * @author
  *
  */
 public class Poker extends JFrame {
@@ -27,27 +30,22 @@ public class Poker extends JFrame {
 	 * Contiene las cartas del juego.
 	 */
 	Baraja mazo = new Baraja();
+	public static final int ANCHO = 64;
+	public static final int ALTO = 98;
+	private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+	private ArrayList<Carta> cartasComunitarias = new ArrayList<Carta>();
+	private ArrayList<JLabel> nombres = new ArrayList<JLabel>();
+	private ArrayList<JLabel> dineros = new ArrayList<JLabel>();
+	JLabel iDealer = new JLabel(new ImageIcon( "src/images/dealer.png"));		
+    Jugador dealer = new Jugador();
 
-	
-	public static final int ANCHO=64;
-	
-	public static final int ALTO=98;
-	
-	private ArrayList<Jugador> jugadores =new ArrayList<Jugador>();
-	private ArrayList<Carta> cartasComunitarias =new ArrayList<Carta>();
-	
-	
-	
-	
-	//128 196    64  98  
 	public Poker() {
 		try {
 			initGUI();
 			//Default window config
 			this.setUndecorated(false);
-			pack();
+			this.pack();
 			this.setResizable(false);
-			this.setLocationRelativeTo(null);
 			this.setVisible(true);
 			this.setSize(960, 540);
 			this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -56,52 +54,33 @@ public class Poker extends JFrame {
 			JOptionPane.showMessageDialog(null, "No se ha encontrado la imágen de fondo");
 		}
 	}
-	
 	/**
 	 * Se ejecuta la interfaz gráfica del juego, se agrega el panel al frame.
 	 */
 	private void initGUI() {
-		crearMesa();
+		
 		this.getContentPane().add(panel);
 		panel.setLayout(null);
 	//
 		iniciarJuego();
 	}
-	
 	/**
 	 * Agrega la imágen de fondo al panel, agrega las cartas a la mesa y las posiciona.
 	 */
-	private void crearMesa() {
-	
-		imagenDeFondo.setBounds(0, 0, 960, 540);
-		panel.add(imagenDeFondo);
-		agregarLasCartasALaMesa();
-		posicionarMasoEnlaMesa();
-	}
-	
-	/**
-	 * Posiciona la baraja en la mesa.
-	 */
-	private void posicionarMasoEnlaMesa() {
-
-		int x=850;
-		int y=10;
-		//vamos a graficar el mazo usaremos 20 cartas ara ello (ara que no quede muy grueso)
-		for (int i=0;i<10;i++) {
-			mazo.getBarajaFrancesa().get(i).setBounds(x,y,ANCHO,ALTO);
-			x--;
-			y--;
-			
-		}
-	}
-	 
-
 	public void iniciarJuego() {
-	sacarDelMazo();
+	
+    int etapa;
+
+    
+    
+	crearMesa();
+
 	crearJugadores();
 	repartirParaIniciar();
-	sacarDelMazo();
-	sacarDelMazo();
+	verTodo();
+	dealer=jugadores.get(4);
+	posicionarIDialer();
+	
 	
 	}
 	
@@ -136,16 +115,16 @@ public class Poker extends JFrame {
 		}
 			
 		}
-	
-	
-		
-	
+
 	public void crearJugadores() {
 
 		int cuantosJugadores=Integer.parseInt(JOptionPane.showInputDialog("cuantos Jugadores?"));
 		for (int cuantos=0;cuantos<cuantosJugadores;cuantos++) {
 			jugadores.add(new Jugador());
+			jugadores.get(cuantos).setDinero(100);
+			jugadores.get(cuantos).setNombre(JOptionPane.showInputDialog("nombre del jugador "+ (cuantos+1)));
 		}
+		posicionarNombreDelosJugadores();
 	}
 	
 	public void repartir (Jugador quien) {
@@ -155,6 +134,13 @@ public class Poker extends JFrame {
 			imagenDeFondo.add(quien.getMisCartas().get(i));
 		}
 	}
+	private void crearMesa() {
+		
+		imagenDeFondo.setBounds(0, 0, 960, 540);
+		panel.add(imagenDeFondo);
+		agregarLasCartasALaMesa();
+		imagenDeFondo.add(iDealer);
+	}
 	
 	
 	public void repartirParaIniciar() {
@@ -162,8 +148,10 @@ public class Poker extends JFrame {
 			repartir(jugadores.get(i));
 		}
 		posicionarCartasDeLosJugadores();
+		
+		
+		
 	}
-
 	/**
 	 * Agrega la baraja a la mesa.
 	 */
@@ -172,7 +160,6 @@ public class Poker extends JFrame {
 		imagenDeFondo.add(mazo.getBarajaFrancesa().get(i));
 		}
 	}
-		
 	public void posicionarCartasDeLosJugadores(){
 	//	posicionando jugador 1
 
@@ -237,12 +224,97 @@ public class Poker extends JFrame {
 				jugadores.get(5).getMisCartas().get(1).setBounds(
 						jugadores.get(5).getMisCartas().get(0).getBounds().x + 67,221,ANCHO,ALTO);
 			}
-		
-		
-		
-	
-		posicionarMasoEnlaMesa();
+
 	}
+	public void posicionarNombreDelosJugadores() {
+		
+		for  (int i=0;i<jugadores.size();i++) {
+		
+			JLabel nombreDelJugador = new JLabel(jugadores.get(i).getNombre(),JLabel.CENTER);
+			nombres.add(nombreDelJugador);
+			JLabel dineroDelJugador = new JLabel(Integer.toString(jugadores.get(i).getDinero())+"$",JLabel.CENTER);
+			dineros.add(dineroDelJugador);	
+			
+			nombres.get(i).setFont(new Font("Serif", Font.BOLD, 14));		
+			nombres.get(i).setForeground(Color.WHITE);
+			dineros.get(i).setFont(new Font("Serif", Font.BOLD, 14));		
+			dineros.get(i).setForeground(Color.YELLOW);
+			
+			imagenDeFondo.add(nombres.get(i));
+			imagenDeFondo.add(dineros.get(i));
+		}
+		
+		//nombre y dinero  del jugador 1
+		
+		if (jugadores.size()>0) {
+		nombres.get(0).setBounds(293, 10, 80, 16);
+		dineros.get(0).setBounds(293, 26, 80, 16);
+		}
+		// nombre y dinero del jugador 2
+
+		if (jugadores.size()>1) {
+		nombres.get(1).setBounds(593, 10, 80, 16);
+		dineros.get(1).setBounds(593, 26, 80, 16);
+		}
+		// nombre y dinero del jugador 3
+
+		if (jugadores.size()>2) {
+		nombres.get(2).setBounds(883, 250, 80, 16);
+		dineros.get(2).setBounds(883, 266, 80, 16);
+		}
+		// nombre y dinero del jugador 4
+
+		if (jugadores.size()>3) {
+		nombres.get(3).setBounds(593, 490, 80, 16);
+		dineros.get(3).setBounds(593, 506, 80, 16);
+		}
+		
+		if (jugadores.size()>4) {
+		// nombre y dinero del jugador 5
+		nombres.get(4).setBounds(293, 490, 80, 16);
+		dineros.get(4).setBounds(293, 506, 80, 16);	
+		}
+		
+		if (jugadores.size()>5) {
+		// nombre y dinero del jugador 6
+		nombres.get(5).setBounds(1, 250, 78, 16);
+		dineros.get(5).setBounds(1, 266, 78, 16);	
+		}
+		
+	}
+	public void  verTodo() {
+		
+		for (int j = 0; j < jugadores.size(); j++) {
+			for (int i = 0; i < 2; i++) {
+				jugadores.get(j).getMisCartas().get(i).voltear();
+
+			}
+
+		}
+
+	}
+	 public void posicionarIDialer() {
+		 if (dealer==jugadores.get(0)) {
+			 iDealer.setBounds(360,20,25,25);
+		 }
+		 
+		 if (dealer==jugadores.get(1)) {
+			 iDealer.setBounds(660,20,25,25);
+		 }
+		 
+		 if (dealer==jugadores.get(2)) {
+			 iDealer.setBounds(910,295,25,25);
+		 }
+
+		 if (dealer==jugadores.get(3)) {
+			 iDealer.setBounds(570,495 ,25,25);
+		 }
+		 
+		 if (dealer==jugadores.get(4)) {
+			 iDealer.setBounds(280,495 ,25,25);
+		 }
+		 
+	 }
 }
 
 
