@@ -1,12 +1,14 @@
 package Poker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Baraja {
 
-	private ArrayList<Carta> barajaFrancesa = new ArrayList<Carta>();
+	private ArrayList<Carta> barajaFrancesa = new ArrayList<Carta>(); 
 
 	public void crearUnaBaraja() {
+		
 		int valor=11;
 
 		String[] palos = { "p", "d", "t", "c" };
@@ -37,6 +39,9 @@ public class Baraja {
 			for (int palo = 0; palo < 4; palo++) {
 				barajaFrancesa.add(new Carta(1, simbolos[3], palos[palo], colores[palo]));
 			}
+			
+			Collections.shuffle(barajaFrancesa);
+		
 	} 
 
 	public Baraja() {
@@ -46,4 +51,6 @@ public class Baraja {
 	public ArrayList<Carta> getBarajaFrancesa() {
 		return barajaFrancesa;
 	}
+	
+
 }
